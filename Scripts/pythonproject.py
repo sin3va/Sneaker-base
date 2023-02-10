@@ -418,20 +418,19 @@ class add_data(tk.Toplevel):
                 self.entry_lbl7.get() == '' or self.entry_lbl8.get() == '' or self.entry_lbl9.get() == '':
             mistake()
 
-        elif (
-                self.entry_lbl10.get() == '' and self.entry_lbl11.get() == '' and self.entry_lbl12.get() == '' and self.entry_lbl13.get() == '' and self.entry_lbl14.get() == ''):
+        elif (self.entry_lbl10.get() == '' and self.entry_lbl11.get() == '' and self.entry_lbl12.get() == '' and self.entry_lbl13.get() == '' and self.entry_lbl14.get() == ''):
             mistake()
         elif (self.entry_lbl10.get() != '' and not (
-        self.entry_lbl10.get()).isdigit()) or (self.entry_lbl11.get() != '' and
-                                               not (
-                                               self.entry_lbl11.get()).isdigit()) or (
+            self.entry_lbl10.get()).isdigit()) or (self.entry_lbl11.get() != '' and
+                                                   not (
+                self.entry_lbl11.get()).isdigit()) or (
                 self.entry_lbl12.get() != '' and not (
-        self.entry_lbl12.get()).isdigit()) \
+                    self.entry_lbl12.get()).isdigit()) \
                 or (self.entry_lbl13.get() != '' and not (
-        self.entry_lbl13.get()).isdigit()) or (self.entry_lbl14.get() != '' and not
-        (self.entry_lbl14.get()).isdigit()) or (self.entry_lbl3.get() != '' and not (
-        self.entry_lbl3.get()).isdigit()) or (self.entry_lbl8.get() != '' and not (
-        self.entry_lbl8.get()).isdigit()):
+                    self.entry_lbl13.get()).isdigit()) or (self.entry_lbl14.get() != '' and not
+                                                           (self.entry_lbl14.get()).isdigit()) or (self.entry_lbl3.get() != '' and not (
+                                                               self.entry_lbl3.get()).isdigit()) or (self.entry_lbl8.get() != '' and not (
+                self.entry_lbl8.get()).isdigit()):
             mistake()
         elif int(self.entry_lbl3.get()) == 2017 and (
                 self.entry_lbl11.get() == '' or self.entry_lbl12.get() == '' or self.entry_lbl13.get() == '' or self.entry_lbl14.get() == ''):
@@ -456,13 +455,15 @@ class add_data(tk.Toplevel):
                  'Retail': self.entry_lbl8.get(), 'Colour': self.entry_lbl9.get()},
                 ignore_index=True).to_pickle(
                 bd1pth)
-            pd.read_pickle(bd2pth).append({'Id': self.entry_lbl7.get(),
-                                           'Medium resale price in 2016': self.entry_lbl10.get(),
-                                           'Medium resale price in 2017': self.entry_lbl11.get(),
-                                           'Medium resale price in 2018': self.entry_lbl12.get(),
-                                           'Medium resale price in 2019': self.entry_lbl13.get(),
-                                           'Medium resale price in 2020': self.entry_lbl14.get()},
-                                          ignore_index=True).to_pickle(bd2pth)
+            pd.read_pickle(bd2pth).append(
+                {
+                    'Id': self.entry_lbl7.get(),
+                    'Medium resale price in 2016': self.entry_lbl10.get(),
+                    'Medium resale price in 2017': self.entry_lbl11.get(),
+                    'Medium resale price in 2018': self.entry_lbl12.get(),
+                    'Medium resale price in 2019': self.entry_lbl13.get(),
+                    'Medium resale price in 2020': self.entry_lbl14.get()},
+                ignore_index=True).to_pickle(bd2pth)
             ready()
             self.entry_lbl1.delete(0, tk.END)
             self.entry_lbl2.delete(0, tk.END)
@@ -510,18 +511,33 @@ class change_data(tk.Toplevel):
         self.combo1 = Combobox(self, width=34, state='readonly')
         self.combo1.place(x=260, y=50)
         self.combo1['values'] = (
-        'Без фильтра', 'Бренд', 'Модель', 'Год', 'Месяц', 'День', 'Идентификатор',
-        'Розничная цена, $', 'Основной цвет')
+            'Без фильтра',
+            'Бренд',
+            'Модель',
+            'Год',
+            'Месяц',
+            'День',
+            'Идентификатор',
+            'Розничная цена, $',
+            'Основной цвет')
         self.combo1.current(0)
         self.entry_lbl2 = tk.Entry(self, width=68, bg=bgcolour1)
         self.entry_lbl2.place(x=73, y=80)
-        self.btn1 = tk.Button(self,
-                              text='Вывести', command=self.output, bg=btncolour,
-                              fg=btntextcolour,
-                              activebackground=btncolourpushed, width=10)
+        self.btn1 = tk.Button(
+            self,
+            text='Вывести',
+            command=self.output,
+            bg=btncolour,
+            fg=btntextcolour,
+            activebackground=btncolourpushed,
+            width=10)
         self.btn1.place(x=495, y=60)
         self.frame = tk.Frame(self, bg=bgcolour1)
-        self.frame.place(relx=0.069, rely=0.22, relwidth=0.8615, relheight=0.57)
+        self.frame.place(
+            relx=0.069,
+            rely=0.22,
+            relwidth=0.8615,
+            relheight=0.57)
 
         self.btn_exitroot = tk.Button(self, text='Выход', bg=btncolour,
                                       fg=btntextcolour, width=8,
@@ -538,7 +554,9 @@ class change_data(tk.Toplevel):
         """
         if self.combo2.get() == '2':
             self.combo1['values'] = (
-                'Без фильтра', 'Идентификатор', 'Средняя цена перепродажи в 2016, $',
+                'Без фильтра',
+                'Идентификатор',
+                'Средняя цена перепродажи в 2016, $',
                 'Средняя цена перепродажи в 2017, $',
                 'Средняя цена перепродажи в 2018, $',
                 'Средняя цена перепродажи в 2019, $',
@@ -546,8 +564,8 @@ class change_data(tk.Toplevel):
             self.combo1.current(0)
         if self.combo2.get() == '1':
             self.combo1['values'] = (
-            'Без фильтра', 'Бренд', 'Модель', 'Год', 'Месяц', 'День',
-            'Идентификатор', 'Розничная цена, $', 'Основной цвет')
+                'Без фильтра', 'Бренд', 'Модель', 'Год', 'Месяц', 'День',
+                'Идентификатор', 'Розничная цена, $', 'Основной цвет')
             self.combo1.current(0)
 
     def output(self):
@@ -573,9 +591,16 @@ class change_data(tk.Toplevel):
             self.tree = Treeview(self.frame, column=(
                 'Бренд', 'Модель', 'Год', 'Месяц', 'День', 'Идентификатор',
                 'Розничная цена, $', 'Основной цвет'),
-                                 height=13, show='headings')
-            self.columns = ['Бренд', 'Модель', 'Год', 'Месяц', 'День',
-                            'Идентификатор', 'Розничная цена, $', 'Основной цвет']
+                height=13, show='headings')
+            self.columns = [
+                'Бренд',
+                'Модель',
+                'Год',
+                'Месяц',
+                'День',
+                'Идентификатор',
+                'Розничная цена, $',
+                'Основной цвет']
             self.tree.column('Бренд', width=70,
                              anchor=tk.CENTER)
             self.tree.column('Модель', width=310,
@@ -611,57 +636,58 @@ class change_data(tk.Toplevel):
                 self.list_row = []
                 if self.combo1.get() == "Без фильтра":
                     if self.entry_lbl2.get() != '':
-                        text('Сообщение',
-                             'В режиме "Без фильтра" невозможен\nпоиск по ключевым словам')
+                        text(
+                            'Сообщение',
+                            'В режиме "Без фильтра" невозможен\nпоиск по ключевым словам')
                         self.entry_lbl2.delete(0, tk.END)
                     for j in self.bd_main.iloc[i]:
                         self.list_row.append(j)
                     self.full_list.append(self.list_row)
                 if self.combo1.get() == "Бренд":
                     if str(self.bd_main.iloc[i][
-                               'Brand']).upper() == self.entry_lbl2.get().upper():
+                            'Brand']).upper() == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "Модель":
                     if str(self.bd_main.iloc[i][
-                               'Model']).upper() == self.entry_lbl2.get().upper():
+                            'Model']).upper() == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "Год":
                     if str(self.bd_main.iloc[i][
-                               'Year']).upper() == self.entry_lbl2.get().upper():
+                            'Year']).upper() == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "Месяц":
                     if str(self.bd_main.iloc[i][
-                               'Month']).upper() == self.entry_lbl2.get().upper():
+                            'Month']).upper() == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "День":
                     if str(self.bd_main.iloc[i][
-                               'Day']).upper() == self.entry_lbl2.get().upper():
+                            'Day']).upper() == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "Идентификатор":
                     if str(self.bd_main.iloc[i][
-                               'Id']).upper() == self.entry_lbl2.get().upper():
+                            'Id']).upper() == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "Розничная цена, $":
-                    if str(self.bd_main.iloc[i][
-                               'Retail']).upper() == self.entry_lbl2.get().upper():
+                    if str(self.bd_main.iloc[i]['Retail']).upper(
+                    ) == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "Основной цвет":
-                    if str(self.bd_main.iloc[i][
-                               'Colour']).upper() == self.entry_lbl2.get().upper():
+                    if str(self.bd_main.iloc[i]['Colour']).upper(
+                    ) == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
@@ -679,12 +705,14 @@ class change_data(tk.Toplevel):
                 'Средняя цена перепродажи в 2018, $',
                 'Средняя цена перепродажи в 2019, $',
                 'Средняя цена перепродажи в 2020, $'),
-                                 height=13, show='headings')
-            self.columns = ['Идентификатор', 'Средняя цена перепродажи в 2016, $',
-                            'Средняя цена перепродажи в 2017, $',
-                            'Средняя цена перепродажи в 2018, $',
-                            'Средняя цена перепродажи в 2019, $',
-                            'Средняя цена перепродажи в 2020, $']
+                height=13, show='headings')
+            self.columns = [
+                'Идентификатор',
+                'Средняя цена перепродажи в 2016, $',
+                'Средняя цена перепродажи в 2017, $',
+                'Средняя цена перепродажи в 2018, $',
+                'Средняя цена перепродажи в 2019, $',
+                'Средняя цена перепродажи в 2020, $']
             self.tree.column('Идентификатор', width=120,
                              anchor=tk.CENTER)
             self.tree.column('Средняя цена перепродажи в 2016, $', width=210,
@@ -719,45 +747,46 @@ class change_data(tk.Toplevel):
                 self.list_row = []
                 if self.combo1.get() == "Без фильтра":
                     if self.entry_lbl2.get() != '':
-                        text('Сообщение',
-                             'В режиме "Без фильтра" невозможен\nпоиск по ключевым словам')
+                        text(
+                            'Сообщение',
+                            'В режиме "Без фильтра" невозможен\nпоиск по ключевым словам')
                         self.entry_lbl2.delete(0, tk.END)
                     for j in self.bd_main.iloc[i]:
                         self.list_row.append(j)
                     self.full_list.append(self.list_row)
                 if self.combo1.get() == "Идентификатор":
                     if str(self.bd_main.iloc[i][
-                               'Id']).upper() == self.entry_lbl2.get().upper():
+                            'Id']).upper() == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "Средняя цена перепродажи в 2016, $":
-                    if str(self.bd_main.iloc[i][
-                               'Medium resale price in 2016']).upper() == self.entry_lbl2.get().upper():
+                    if str(self.bd_main.iloc[i]['Medium resale price in 2016']).upper(
+                    ) == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "Средняя цена перепродажи в 2017, $":
-                    if str(self.bd_main.iloc[i][
-                               'Medium resale price in 2017']).upper() == self.entry_lbl2.get().upper():
+                    if str(self.bd_main.iloc[i]['Medium resale price in 2017']).upper(
+                    ) == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "Средняя цена перепродажи в 2018, $":
-                    if str(self.bd_main.iloc[i][
-                               'Medium resale price in 2018']).upper() == self.entry_lbl2.get().upper():
+                    if str(self.bd_main.iloc[i]['Medium resale price in 2018']).upper(
+                    ) == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "Средняя цена перепродажи в 2019, $":
-                    if str(self.bd_main.iloc[i][
-                               'Medium resale price in 2019']).upper() == self.entry_lbl2.get().upper():
+                    if str(self.bd_main.iloc[i]['Medium resale price in 2019']).upper(
+                    ) == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
                 if self.combo1.get() == "Средняя цена перепродажи в 2020, $":
-                    if str(self.bd_main.iloc[i][
-                               'Medium resale price in 2020']).upper() == self.entry_lbl2.get().upper():
+                    if str(self.bd_main.iloc[i]['Medium resale price in 2020']).upper(
+                    ) == self.entry_lbl2.get().upper():
                         for j in self.bd_main.iloc[i]:
                             self.list_row.append(j)
                         self.full_list.append(self.list_row)
@@ -852,14 +881,23 @@ class change_data(tk.Toplevel):
                       'повторно нажать кнопку "Вывести".\n'
                       'Сохранить таблицу?').place(x=0, y=0, width=300,
                                                   height=80)
-        btn_yes = tk.Button(self.mess, text='Да', bg=btncolour, fg=btntextcolour,
-                            width=8,
-                            activebackground=btncolourpushed, command=self.save)
+        btn_yes = tk.Button(
+            self.mess,
+            text='Да',
+            bg=btncolour,
+            fg=btntextcolour,
+            width=8,
+            activebackground=btncolourpushed,
+            command=self.save)
         btn_yes.place(relx=0.23, rely=0.68)
-        btn_no = tk.Button(self.mess, text='Нет', bg=btncolour, fg=btntextcolour,
-                           width=8,
-                           activebackground=btncolourpushed,
-                           command=self.mess.destroy)
+        btn_no = tk.Button(
+            self.mess,
+            text='Нет',
+            bg=btncolour,
+            fg=btntextcolour,
+            width=8,
+            activebackground=btncolourpushed,
+            command=self.mess.destroy)
         btn_no.place(relx=0.56, rely=0.68)
 
     def save(self):
@@ -869,7 +907,8 @@ class change_data(tk.Toplevel):
         Возвращает: ничего
         Автор: Данилов Евгений Владимирович
         """
-        filename = 'База данных ' + self.combo2.get() + ' Фильтр ' + self.combo1.get() + '.csv'
+        filename = 'База данных ' + self.combo2.get() + ' Фильтр ' + \
+            self.combo1.get() + '.csv'
         df_search = pd.DataFrame(self.full_list, columns=self.columns)
 
         file = tablepth + filename
@@ -904,17 +943,24 @@ class statistics(tk.Toplevel):
         self.combo1 = Combobox(self, width=30, state='readonly')
         self.combo1.place(x=125, y=40)
         self.combo1['values'] = (
-        'Бренд - Средняя цена', 'Модель - Средняя цена', 'Год - Средняя цена',)
+            'Бренд - Средняя цена',
+            'Модель - Средняя цена',
+            'Год - Средняя цена',
+        )
         self.combo1.current(0)
         btn_graf = tk.Button(self, text='Построить график', bg=btncolour,
                              fg=btntextcolour,
                              activebackground=btncolourpushed,
                              command=self.graph_draw)
         btn_graf.place(x=340, y=40)
-        btn_exitroot = tk.Button(self, text='Выход', bg=btncolour, fg=btntextcolour,
-                                 width=8,
-                                 activebackground=btncolourpushed,
-                                 command=self.exitself)
+        btn_exitroot = tk.Button(
+            self,
+            text='Выход',
+            bg=btncolour,
+            fg=btntextcolour,
+            width=8,
+            activebackground=btncolourpushed,
+            command=self.exitself)
         btn_exitroot.place(x=550, y=452)
 
     def graph_draw(self):
@@ -934,7 +980,13 @@ class statistics(tk.Toplevel):
             fig = plt.figure(figsize=(4, 5), dpi=70)
             ax = fig.add_subplot(1, 1, 1)
             fig.suptitle('')
-            bd.plot(kind='bar', ax=ax, x='Brand', y="Avg Retail", rot=45, fontsize=9)
+            bd.plot(
+                kind='bar',
+                ax=ax,
+                x='Brand',
+                y="Avg Retail",
+                rot=45,
+                fontsize=9)
 
         if self.combo1.get() == 'Модель - Средняя цена':
             fbd = pd.read_pickle(bd1pth)
@@ -942,7 +994,13 @@ class statistics(tk.Toplevel):
             fig = plt.figure(figsize=(4, 5), dpi=70)
             ax = fig.add_subplot(1, 1, 1)
             fig.suptitle('')
-            bd.plot(kind='bar', ax=ax, x='Model', y="Avg Retail", rot=45, fontsize=9)
+            bd.plot(
+                kind='bar',
+                ax=ax,
+                x='Model',
+                y="Avg Retail",
+                rot=45,
+                fontsize=9)
 
         if self.combo1.get() == 'Год - Средняя цена':
             fbd = pd.read_pickle(bd1pth)
@@ -950,7 +1008,13 @@ class statistics(tk.Toplevel):
             fig = plt.figure(figsize=(4, 5), dpi=70)
             ax = fig.add_subplot(1, 1, 1)
             fig.suptitle('')
-            bd.plot(kind='bar', ax=ax, x='Year', y="Avg Retail", rot=45, fontsize=9)
+            bd.plot(
+                kind='bar',
+                ax=ax,
+                x='Year',
+                y="Avg Retail",
+                rot=45,
+                fontsize=9)
 
         CANVAS_1 = FigureCanvasTkAgg(fig, master=self.graph)
         CANVAS_1.draw()
@@ -959,10 +1023,14 @@ class statistics(tk.Toplevel):
         toolbar = NavigationToolbar2Tk(CANVAS_1, self.graph)
         toolbar.update()
         CANVAS_1.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
-        btn_exitroot = tk.Button(self, text='Выход', bg=btncolour, fg=btntextcolour,
-                                 width=8,
-                                 activebackground=btncolourpushed,
-                                 command=self.exitself)
+        btn_exitroot = tk.Button(
+            self,
+            text='Выход',
+            bg=btncolour,
+            fg=btntextcolour,
+            width=8,
+            activebackground=btncolourpushed,
+            command=self.exitself)
         btn_exitroot.place(x=550, y=452)
 
     def exitself(self):
